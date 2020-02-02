@@ -13,11 +13,16 @@ class User: ObservableObject {
     @Published var lastName = "Baggins"
 }
 
+struct Person: Codable {
+    var name: String
+    var surname: String
+}
+
 struct SecondView: View {
     
     @Environment(\.presentationMode) var presentationMode
     @State private var numbers = [Int]()
-    @State private var currentNumber = 1
+    @State private var currentNumber = UserDefaults.standard.integer(forKey: "Number")
     var name: String
     
     var body: some View {
@@ -35,6 +40,7 @@ struct SecondView: View {
                 Button("Add Number") {
                     self.numbers.append(self.currentNumber)
                     self.currentNumber += 1
+                    UserDefaults.standard.set(self.currentNumber, forKey: "Number")
                 }
                 
                 Button("Dismiss") {
@@ -53,6 +59,7 @@ struct SecondView: View {
 struct ContentView: View {
     
     @ObservedObject var user = User()
+    @State private var person = Person(name: "Taylor", surname: "Swift")
     @State private var showingSheet = false
     
     var body: some View {
@@ -63,6 +70,12 @@ struct ContentView: View {
             TextField("Last name", text: $user.lastName)
             
             Button("Show Sheet") {
+                let encoder = JSONEncoder()
+                
+                if let data = try? encoder.encode(self.person) {
+                    UserDefaults.standard.set(data, forKey: "UserData")
+                }
+                
                 self.showingSheet.toggle()
             }
             .sheet(isPresented: $showingSheet) {
