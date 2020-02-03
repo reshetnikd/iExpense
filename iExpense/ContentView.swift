@@ -8,80 +8,32 @@
 
 import SwiftUI
 
-class User: ObservableObject {
-    @Published var firstName = "Bilbo"
-    @Published var lastName = "Baggins"
-}
-
-struct Person: Codable {
-    var name: String
-    var surname: String
-}
-
-struct SecondView: View {
+struct ContentView: View {
     
-    @Environment(\.presentationMode) var presentationMode
-    @State private var numbers = [Int]()
-    @State private var currentNumber = UserDefaults.standard.integer(forKey: "Number")
-    var name: String
+    @ObservedObject var expenses = Expences()
     
     var body: some View {
         NavigationView {
-            VStack {
-                Text("Hello, \(name)!")
-                
-                List {
-                    ForEach(numbers, id: \.self) {
-                        Text("\($0)")
-                    }
-                    .onDelete(perform: removeRows)
+            List {
+                ForEach(expenses.items, id: \.name) { item in
+                    Text(item.name)
                 }
-                
-                Button("Add Number") {
-                    self.numbers.append(self.currentNumber)
-                    self.currentNumber += 1
-                    UserDefaults.standard.set(self.currentNumber, forKey: "Number")
-                }
-                
-                Button("Dismiss") {
-                    self.presentationMode.wrappedValue.dismiss()
-                }
+            .onDelete(perform: removeItems)
             }
-            .navigationBarItems(leading: EditButton())
+            .navigationBarTitle("iExpense")
+            .navigationBarItems(trailing:
+                Button(action: {
+                    let expense = ExpanceItem(name: "Test", type: "Personal", amount: 5)
+                    self.expenses.items.append(expense)
+                }) {
+                    Image(systemName: "plus")
+                }
+            )
         }
     }
     
-    func removeRows(at offsets: IndexSet) {
-        numbers.remove(atOffsets: offsets)
-    }
-}
-
-struct ContentView: View {
-    
-    @ObservedObject var user = User()
-    @State private var person = Person(name: "Taylor", surname: "Swift")
-    @State private var showingSheet = false
-    
-    var body: some View {
-        VStack {
-            Text("Your name is \(user.firstName) \(user.lastName).")
-            
-            TextField("First name", text: $user.firstName)
-            TextField("Last name", text: $user.lastName)
-            
-            Button("Show Sheet") {
-                let encoder = JSONEncoder()
-                
-                if let data = try? encoder.encode(self.person) {
-                    UserDefaults.standard.set(data, forKey: "UserData")
-                }
-                
-                self.showingSheet.toggle()
-            }
-            .sheet(isPresented: $showingSheet) {
-                SecondView(name: self.user.firstName)
-            }
-        }
+    func removeItems(at offsets: IndexSet) {
+        expenses.items.remove(atOffsets: offsets)
     }
 }
 
