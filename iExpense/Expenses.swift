@@ -9,5 +9,23 @@
 import Foundation
 
 class Expenses: ObservableObject {
-    @Published var items = [ExpanceItem]()
+    @Published var items: [ExpanceItem] {
+        didSet {
+            let encoder = JSONEncoder()
+            if let encoded = try? encoder.encode(items) {
+                UserDefaults.standard.set(encoded, forKey: "Items")
+            }
+        }
+    }
+    
+    init() {
+        if let items = UserDefaults.standard.data(forKey: "Items") {
+            let decoder = JSONDecoder()
+            if let decoder = try? decoder.decode([ExpanceItem].self, from: items) {
+                self.items = decoder
+                return
+            }
+        }
+        self.items = []
+    }
 }

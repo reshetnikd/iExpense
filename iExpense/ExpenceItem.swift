@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct ExpanceItem: Identifiable {
+struct ExpanceItem: Identifiable, Codable {
     let id = UUID()
     let name: String
     let type: String
