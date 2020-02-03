@@ -8,6 +8,6 @@
 
 import Foundation
 
-class Expences: ObservableObject {
+class Expenses: ObservableObject {
     @Published var items = [ExpanceItem]()
 }

@@ -13,6 +13,7 @@
 		3527118423E6C9AA000D5663 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3527118323E6C9AA000D5663 /* Assets.xcassets */; };
 		3527118723E6C9AA000D5663 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3527118623E6C9AA000D5663 /* Preview Assets.xcassets */; };
 		3527118A23E6C9AA000D5663 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3527118823E6C9AA000D5663 /* LaunchScreen.storyboard */; };
+		356FFF7623E87F5600CAAE13 /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356FFF7523E87F5600CAAE13 /* AddView.swift */; };
 		35B2B4DE23E8646F0054FB17 /* ExpenceItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B2B4DD23E8646F0054FB17 /* ExpenceItem.swift */; };
 		35B2B4E023E865150054FB17 /* Expenses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B2B4DF23E865150054FB17 /* Expenses.swift */; };
 /* End PBXBuildFile section */
@@ -26,6 +27,7 @@
 		3527118623E6C9AA000D5663 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		3527118923E6C9AA000D5663 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3527118B23E6C9AA000D5663 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		356FFF7523E87F5600CAAE13 /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
 		35B2B4DD23E8646F0054FB17 /* ExpenceItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenceItem.swift; sourceTree = "<group>"; };
 		35B2B4DF23E865150054FB17 /* Expenses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expenses.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -63,6 +65,7 @@
 				3527117D23E6C9AA000D5663 /* AppDelegate.swift */,
 				3527117F23E6C9AA000D5663 /* SceneDelegate.swift */,
 				3527118123E6C9AA000D5663 /* ContentView.swift */,
+				356FFF7523E87F5600CAAE13 /* AddView.swift */,
 				35B2B4DD23E8646F0054FB17 /* ExpenceItem.swift */,
 				35B2B4DF23E865150054FB17 /* Expenses.swift */,
 				3527118323E6C9AA000D5663 /* Assets.xcassets */,
@@ -154,6 +157,7 @@
 			files = (
 				35B2B4E023E865150054FB17 /* Expenses.swift in Sources */,
 				3527117E23E6C9AA000D5663 /* AppDelegate.swift in Sources */,
+				356FFF7623E87F5600CAAE13 /* AddView.swift in Sources */,
 				3527118023E6C9AA000D5663 /* SceneDelegate.swift in Sources */,
 				3527118223E6C9AA000D5663 /* ContentView.swift in Sources */,
 				35B2B4DE23E8646F0054FB17 /* ExpenceItem.swift in Sources */,
