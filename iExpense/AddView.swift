@@ -10,6 +10,7 @@ import SwiftUI
 
 struct AddView: View {
     
+    @State private var showingAlert = false
     @State private var name = ""
     @State private var type = "Personal"
     @State private var amount = ""
@@ -37,8 +38,13 @@ struct AddView: View {
                     let item = ExpanceItem(name: self.name, type: self.type, amount: actualAmount)
                     self.expenses.items.append(item)
                     self.presentationMode.wrappedValue.dismiss()
+                } else {
+                    self.showingAlert = true
                 }
             })
+        }
+        .alert(isPresented: $showingAlert) {
+            Alert(title: Text("Invalid amount value"), message: Text("Please enter amount in digits"), dismissButton: .default(Text("OK")))
         }
     }
 }
